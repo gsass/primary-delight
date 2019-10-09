@@ -10,6 +10,8 @@ Here's you a bingo board. If you win, you...can stop watching the debate! And ha
   - Click to toggle option done
   - Fun thing happens when you get a bingo?
   - Share icons?
+  - Print style?
+  - Button to re-render?
   - Attribution?
   - Hosting???
 - I guess do PRs but I don't super care
