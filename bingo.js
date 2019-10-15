@@ -8,10 +8,10 @@
     'Speaking in Spanish',
     '"we must not forget the laborers"',
     'Yang proposes freedomcoin (again)',
-    'a candidate eyerolls Williamson',
+    'A candidate eyerolls Williamson',
     'Someone indirectly calls Biden old',
     'longwinded personal narrative unrelated to the question',
-    'return to previous question',
+    'Return to previous question',
     '[yelling] "sometimes you need more than a plan. You need action."',
     'dumpy white guy claims to represent all of Ohio/America, asks inscrutable question',
     'mumble mumble something about the troops',
@@ -28,9 +28,9 @@
     '"Working class" used in a way that actually means "working class whites"',
     'Biden tells longwinded story that goes nowhere',
     'A trash-tier candidate unleashes a brutal and obviously scripted attack on Biden',
-    'Candidate obects to not getting to speak on an issue, moderator firmly allows 30 seconds; Candidate goes on for 2+ minutes',
+    'Candidate obects to not getting to speak, mod allows 30 seconds; Candidate goes on for 2+ minutes',
     'Discussion of the plight of coal workers.',
-    'Candidate accidentally says something only a rich-as-fuck person would believe.',
+    'Candidate says something only someone super wealthy would believe.',
     '"As a parent..."',
     '"As a Christian..."',
     'Only I can do bipartisan legislation',
@@ -69,7 +69,7 @@
   const fillBoard = (options, freespace) => {
     const table = document.querySelector('#board');
     let shuffled = shuffle(options);
-    let board = shuffled.slice(0,25);
+    let board = shuffled.slice(0,24);
     board.splice(12,0,freespace);
     let cells = board.map(makeCell);
 
