@@ -60,9 +60,10 @@
     return options;
   };
 
-  const makeCell = (content) => {
+  const makeCell = (content, index) => {
     var cell = document.createElement('div');
     cell.classList.add('entry');
+    cell.setAttribute('data-index', index);
     cell.innerHTML = content;
     return cell;
   };
@@ -76,7 +77,6 @@
 
     for (cellIndex in cells) {
       let cell = cells[cellIndex];
-      console.log(cellIndex);
       if (cellIndex == 12) {
         cell.classList.add('freespace');
       }
@@ -84,5 +84,57 @@
     }
   };
 
+  const checkRow = (entries, offset) => {
+    for (i of Array(5).keys()) {
+      if (!entries.includes(5*offset+i)) { return false; }
+    }
+    return true;
+  };
+
+  const checkColumn = (entries, offset) => {
+    for (i of Array(5).keys()) {
+      console.log(`${i}, ${offset}, ${5*i+offset}`)
+      if (!entries.includes(5*i+offset)) { return false; }
+    }
+    return true;
+  };
+
+  const checkDiagonals = (entries) => {
+    const sw = [0,6,12,18,24];
+    const ne = [4,8,12,16,20];
+    for (diagonal of [sw, ne]) {
+      if (diagonal.every(d => entries.includes(d))) { return true; }
+    }
+    return false;
+  };
+
+  const checkForBingo = () => {
+    let bingo = false;
+    let checkedEntries = [];
+    document.querySelectorAll('.checked, .freespace').forEach(
+      e => checkedEntries.push(parseInt(e.dataset.index))
+    );
+    for (i of Array(5).keys()) {
+      bingo = bingo || checkRow(checkedEntries, i);
+    }
+    for (i of Array(5).keys()) {
+      bingo = bingo || checkColumn(checkedEntries, i);
+    }
+    bingo = bingo || checkDiagonals(checkedEntries);
+    if (bingo) {
+      console.log('bingo!');
+    }
+  }
+
   fillBoard(options, freespace);
+
+  document.querySelectorAll('.entry').forEach(
+    entry => entry.addEventListener(
+      'click',
+      () => {
+        entry.classList.toggle('checked');
+        checkForBingo();
+      }
+    )
+  );
 })()
