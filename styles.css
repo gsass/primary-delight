@@ -1,0 +1,27 @@
+h1 {
+  margin: 2em auto;
+}
+
+#board {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 0;
+}
+
+td {
+  width: 20%;
+  padding: 1em 0;
+  border: solid 1px #666;
+  overflow: hidden;
+}
+
+.checked {
+  background: gold;
+}
+
+.freespace, .freespace.checked {
+  background: black;
+  color: white;
+  font-weight: 600;
+}
