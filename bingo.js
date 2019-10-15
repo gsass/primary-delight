@@ -93,7 +93,6 @@
 
   const checkColumn = (entries, offset) => {
     for (i of Array(5).keys()) {
-      console.log(`${i}, ${offset}, ${5*i+offset}`)
       if (!entries.includes(5*i+offset)) { return false; }
     }
     return true;
