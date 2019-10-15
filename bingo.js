@@ -45,7 +45,7 @@
     'Sanders heart issue drama',
     'Candidate stands with Biden for some reason',
   ];
-  const freespace = "Call for civility";
+  const freespace = `FREE SPACE:\rCall for civility`;
 
   const shuffle = (options) => {
     let i, randomIndex, temp;
@@ -61,29 +61,26 @@
   };
 
   const makeCell = (content) => {
-    var cell = document.createElement('td');
+    var cell = document.createElement('div');
+    cell.classList.add('entry');
     cell.innerHTML = content;
     return cell;
   };
 
   const fillBoard = (options, freespace) => {
-    const table = document.querySelector('#board');
+    const board = document.querySelector('#board');
     let shuffled = shuffle(options);
-    let board = shuffled.slice(0,24);
-    board.splice(12,0,freespace);
-    let cells = board.map(makeCell);
+    options = shuffled.slice(0,24);
+    options.splice(12,0,freespace);
+    let cells = options.map(makeCell);
 
-    for (i of Array(5).keys()) {
-      let row = document.createElement('tr');
-      for (j of Array(5).keys()) {
-        let cellIndex = i * 5 + j;
-        let cell = cells[cellIndex];
-        if (cellIndex === 12) {
-          cell.classList.add('freespace');
-        }
-        row.appendChild(cell);
+    for (cellIndex in cells) {
+      let cell = cells[cellIndex];
+      console.log(cellIndex);
+      if (cellIndex == 12) {
+        cell.classList.add('freespace');
       }
-      table.appendChild(row);
+      board.appendChild(cell);
     }
   };
 
